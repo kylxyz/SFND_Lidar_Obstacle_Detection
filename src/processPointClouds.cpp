@@ -107,6 +107,27 @@ std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT
     std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT>::Ptr> segResult = SeparateClouds(inliers,cloud);
     return segResult;
 }
+/*
+template <typename PointT>
+std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::RansacSeparate(std::unordered_set<int> inliers, typename pcl::PointCloud<PointT>::Ptr cloud)
+{
+typename pcl::PointCloud<PointT>::Ptr obstCloud(new pcl::PointCloud<PointT>());
+typename pcl::PointCloud<PointT>::Ptr planeCloud(new pcl::PointCloud<PointT>());
+
+for (int index = 0; index < cloud->points.size(); index++)
+{
+    pcl::PointXYZI point = cloud->points[index];
+    if (inliers.count(index))
+        planeCloud->points.push_back(point);
+    else
+        obstCloud->points.push_back(point);
+}
+
+std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT>::Ptr> segResult(obstCloud, planeCloud);
+
+return segResult;
+}
+*/
 
 
 template<typename PointT>
